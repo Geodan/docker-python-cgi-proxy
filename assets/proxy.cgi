@@ -12,10 +12,11 @@ content type. It supports GET and POST requests."""
 import urllib2
 import cgi
 import sys, os
+from myconfig import *
 
 # Designed to prevent Open Proxy type stuff.
-
-allowedHosts = ['services.bgr.de','ggis.un-igrac.org','igrac-prd.geodan.nl','sedac.ciesin.columbia.edu','services.geodan.nl','data.fao.org']
+allowedHosts =  ALLOWED_HOSTS.split(":")
+#allowedHosts = ['services.bgr.de','ggis.un-igrac.org','igrac-prd.geodan.nl','sedac.ciesin.columbia.edu','services.geodan.nl','data.fao.org']
 
 method = os.environ["REQUEST_METHOD"]
 
@@ -37,8 +38,6 @@ try:
         print "Content-Type: text/plain"
         print
         print "This proxy does not allow you to access that location (%s)." % (host,)
-        print
-        print os.environ
   
     elif url.startswith("http://") or url.startswith("https://"):
     

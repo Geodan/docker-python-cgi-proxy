@@ -7,7 +7,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     apt-get install -y ca-certificates ca-certificates python && \
     rm -rf /var/lib/apt/lists/*
 
-RUN a2enmod cgi
+RUN a2enmod cgi env
 
 COPY assets/proxy.cgi /usr/lib/cgi-bin/proxy.cgi
 COPY assets/entrypoint.sh /entrypoint.sh
