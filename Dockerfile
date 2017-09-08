@@ -10,6 +10,9 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
 RUN a2enmod cgi env
 
 COPY assets/proxy.cgi /usr/lib/cgi-bin/proxy.cgi
+COPY assets/cgi-site.conf /etc/apache2/sites-available/
 COPY assets/entrypoint.sh /entrypoint.sh
+
+RUN a2dissite 000-default && a2ensite cgi-site
 
 ENTRYPOINT ["/entrypoint.sh"]
